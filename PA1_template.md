@@ -83,6 +83,7 @@ median(activityday$steps)
 
 ## What is the average daily activity pattern?
 1. Make a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
+
 Creating a data frame in which steps are aggregated into averages within each 5 minute interval
 
 ```r
@@ -121,7 +122,8 @@ nrow(activity) - nrow(activitycomplete)
 ## [1] 2304
 ```
 
-2.Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
+2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
+
 I am replacing missing values with the mean number of steps for each interval across all of the days.
 
 ```r
@@ -130,13 +132,15 @@ activityimpute <- merge(activity, activityinterval)
 ```
 
 3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
-If steps is NA, I am replacing the value with the mean number of steps for the interval
+
+**If steps is NA, I am replacing the value with the mean number of steps for the interval**
 
 ```r
 activityimpute$steps[is.na(activityimpute$steps)] <- activityimpute$mean.steps[is.na(activityimpute$steps)]
 ```
 
-4.Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
+4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
+
 Create a dataset with the total number of steps per day using the imputed data
 
 ```r
@@ -154,6 +158,7 @@ qplot(steps, data = activitydayimpute)
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
+
 Calculate mean and median
 
 ```r
